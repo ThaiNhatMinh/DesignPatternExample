@@ -20,9 +20,9 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{36D7BD92-BFE9-4081-B22A-07729EE32F9A}</ProjectGuid>
+    <ProjectGuid>{8FA74992-E29B-44CB-A460-EF325F206746}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>Composite</RootNamespace>
+    <RootNamespace>Prototype</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -143,17 +143,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="City.h" />
-    <ClInclude Include="GameObject.h" />
-    <ClInclude Include="Humman.h" />
+    <ClInclude Include="House.h" />
+    <ClInclude Include="ICloneable.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="City.cpp" />
-    <ClCompile Include="Composite.cpp" />
-    <ClCompile Include="GameObject.cpp" />
-    <ClCompile Include="Humman.cpp" />
+    <ClCompile Include="House.cpp" />
+    <ClCompile Include="Prototype.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
