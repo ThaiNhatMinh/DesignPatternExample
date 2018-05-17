@@ -39,5 +39,16 @@ public:
 		m_pCurrentState->Enter(m_pOwner);
 	}
 
-
+	bool HandleMessage(const Telegram& msg)const
+	{
+		if (m_pCurrentState && m_pCurrentState->OnMessage(m_pOwner, msg))
+		{
+			return 1;
+		}
+		if (m_pGlobalState && m_pGlobalState->OnMessage(m_pOwner, msg))
+		{
+			return 1;
+		}
+		return 0;
+	}
 };

@@ -1,6 +1,6 @@
 #pragma once
 
-
+struct Telegram;
 class GameObject
 {
 private:
@@ -13,5 +13,6 @@ public:
 
 	virtual ~GameObject() = default;
 
+	virtual bool HandleMessage(const Telegram& telegram) = 0;
 	int GetID() { return m_ID; }
 };

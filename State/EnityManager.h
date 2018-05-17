@@ -9,7 +9,7 @@ private:
 
 private:
 
-	GameObjectMap * m_GameObjects;
+	GameObjectMap m_GameObjects;
 
 	EnityManager() = default;
 	EnityManager(const EnityManager& other) = delete;

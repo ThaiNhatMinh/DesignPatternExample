@@ -6,6 +6,6 @@ struct Telegram
 	int Sender;
 	int Reciever;
 	int Msg;
-	float DispatchTime;
+	double DispatchTime;
 	void* ExtraInfo;
 };
