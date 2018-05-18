@@ -7,7 +7,7 @@ class StateMachine
 {
 private:
 	Actor * m_pOwner;
-	State<Actor>* m_pCurrentState, m_pPrevState, m_pGlobalState;
+	State<Actor>* m_pCurrentState, *m_pPrevState, *m_pGlobalState;
 
 
 public:
@@ -50,5 +50,10 @@ public:
 			return 1;
 		}
 		return 0;
+	}
+
+	void RevertToPreviousState()
+	{
+		ChangeState(m_pPrevState);
 	}
 };

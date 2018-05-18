@@ -150,7 +150,13 @@
     <ClInclude Include="EnityManager.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="IState.h" />
+    <ClInclude Include="Location.h" />
     <ClInclude Include="MessageDispatcher.h" />
+    <ClInclude Include="Miner.h" />
+    <ClInclude Include="MinerState.h" />
+    <ClInclude Include="MinersWife.h" />
+    <ClInclude Include="MinesWifeState.h" />
+    <ClInclude Include="Singleton.h" />
     <ClInclude Include="StateMachine.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
@@ -158,7 +164,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="EnityManager.cpp" />
+    <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="MessageDispatcher.cpp" />
+    <ClCompile Include="Miner.cpp" />
+    <ClCompile Include="MinerState.cpp" />
+    <ClCompile Include="MinersWife.cpp" />
+    <ClCompile Include="MinesWifeState.cpp" />
     <ClCompile Include="State.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

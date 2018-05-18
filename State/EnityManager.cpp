@@ -1,10 +1,6 @@
 #include "stdafx.h"
 #include "EnityManager.h"
 
-EnityManager * EnityManager::Get()
-{
-	return Instance;
-}
 
 void EnityManager::RegisterEnity(GameObject * obj)
 {

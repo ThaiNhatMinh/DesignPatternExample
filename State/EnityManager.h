@@ -2,7 +2,8 @@
 
 #include <map>
 #include "GameObject.h"
-class EnityManager
+#include "Singleton.h"
+class EnityManager: public Singleton<EnityManager>
 {
 private:
 	typedef std::map<int, GameObject*> GameObjectMap;
@@ -11,13 +12,9 @@ private:
 
 	GameObjectMap m_GameObjects;
 
-	EnityManager() = default;
-	EnityManager(const EnityManager& other) = delete;
-	EnityManager& operator=(const EnityManager&) = delete;
-	static EnityManager* Instance;
 public:
 
-	static EnityManager* Get();
+
 
 
 	void RegisterEnity(GameObject* obj);
