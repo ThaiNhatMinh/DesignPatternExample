@@ -19,7 +19,7 @@ public:
 	virtual void Execute(MinersWife* wife)override;
 
 	virtual void Exit(MinersWife* wife)override {}
-	virtual bool OnMessage(MinersWife*, const Telegram& msg)override {return 1;}
+	virtual bool OnMessage(MinersWife*, const Telegram& msg)override;
 };
 
 
@@ -43,7 +43,7 @@ public:
 	virtual void Execute(MinersWife* wife)override;
 
 	virtual void Exit(MinersWife* wife)override;
-	virtual bool OnMessage(MinersWife*, const Telegram& msg)override {return 1;}
+	virtual bool OnMessage(MinersWife*, const Telegram& msg)override {return 0;}
 
 };
 
@@ -67,6 +67,18 @@ public:
 	virtual void Execute(MinersWife* wife)override;
 
 	virtual void Exit(MinersWife* wife)override;
-	virtual bool OnMessage(MinersWife*, const Telegram& msg)override {return 1;}
+	virtual bool OnMessage(MinersWife*, const Telegram& msg)override {return 0;}
 
+};
+
+class CookStew : public State<MinersWife>, public Singleton<CookStew>
+{
+public:
+	CookStew() = default;
+	virtual void Enter(MinersWife* wife)override;
+
+	virtual void Execute(MinersWife* wife)override;
+
+	virtual void Exit(MinersWife* wife)override;
+	bool OnMessage(MinersWife* wife, const Telegram& msg)override;
 };

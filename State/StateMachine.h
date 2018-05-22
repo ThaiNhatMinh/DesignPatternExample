@@ -56,4 +56,9 @@ public:
 	{
 		ChangeState(m_pPrevState);
 	}
+	bool isInState(const State<Actor>& st)
+	{
+		if (typeid(*m_pCurrentState) == typeid(st)) return true;
+		return false;
+	}
 };

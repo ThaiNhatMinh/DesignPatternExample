@@ -13,7 +13,7 @@ class Miner : public GameObject
 {
 private:
 	StateMachine<Miner> m_StateMachine;
-
+	GameObject* m_pWife;
 	location m_Location;
 	int m_iGoldCarried;
 	int m_iMoneyInBank;
@@ -51,5 +51,7 @@ public:
 	void          BuyAndDrinkAWhiskey() { m_iThirst = 0; m_iMoneyInBank -= 2; }
 
 
-	virtual bool HandleMessage(const Telegram& telegram) { return 1; }
+	virtual bool HandleMessage(const Telegram& telegram) { return m_StateMachine.HandleMessage(telegram); }
+	GameObject* GetWife() { return m_pWife; }
+	void SetWife(GameObject* pObj) { m_pWife = pObj; }
 };

@@ -1,16 +1,17 @@
 #pragma once
 #include <set>
 #include "Telegram.h"
+#include "Singleton.h"
 class GameObject;
 class EnityManager;
-class MessageDispatcher
+class MessageDispatcher: public Singleton<MessageDispatcher>
 {
 private:
 	std::set<Telegram> PriorityQ;
-	EnityManager* m_pEnityMgr;
+	
 	void Dispatche(GameObject* pReceiver, const Telegram& msg);
 public:
-	MessageDispatcher(EnityManager* enitymgr);
+	MessageDispatcher();
 	~MessageDispatcher();
 
 	void DispatchMessage(float delay, int sender, int receiver, int msg, void* extra_info);

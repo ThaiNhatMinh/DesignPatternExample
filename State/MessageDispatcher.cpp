@@ -12,7 +12,7 @@ void MessageDispatcher::Dispatche(GameObject * pReceiver, const Telegram & msg)
 		cout << "Message not handled";
 	}
 }
-MessageDispatcher::MessageDispatcher(EnityManager* enitymgr):m_pEnityMgr(enitymgr)
+MessageDispatcher::MessageDispatcher()
 {
 }
 
@@ -23,7 +23,7 @@ MessageDispatcher::~MessageDispatcher()
 
 void MessageDispatcher::DispatchMessage(float delay, int sender, int receiver, int msg, void * extra_info)
 {
-	GameObject* pReceiver = m_pEnityMgr->GetEnity(receiver);
+	GameObject* pReceiver = EnityMgr->GetEnity(receiver);
 
 	Telegram telegram; 
 	telegram.DispatchTime = 0;
@@ -51,10 +51,10 @@ void MessageDispatcher::DispatchDelayMsg()
 {
 	double t = (double)time(nullptr);
 
-	while (PriorityQ.begin()->DispatchTime < t && PriorityQ.begin()->DispatchTime>0)
+	while (PriorityQ.size()>0 && PriorityQ.begin()->DispatchTime >=t && PriorityQ.begin()->DispatchTime>0)
 	{
 		Telegram telegram = *PriorityQ.begin();
-		GameObject* pReceiver = m_pEnityMgr->GetEnity(telegram.Receiver);
+		GameObject* pReceiver = EnityMgr->GetEnity(telegram.Receiver);
 		Dispatche(pReceiver, telegram);
 		PriorityQ.erase(PriorityQ.begin());
 

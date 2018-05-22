@@ -150,8 +150,10 @@
     <ClInclude Include="EnityManager.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="IState.h" />
+    <ClInclude Include="IWife.h" />
     <ClInclude Include="Location.h" />
     <ClInclude Include="MessageDispatcher.h" />
+    <ClInclude Include="MessageType.h" />
     <ClInclude Include="Miner.h" />
     <ClInclude Include="MinerState.h" />
     <ClInclude Include="MinersWife.h" />

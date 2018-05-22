@@ -12,8 +12,8 @@ private:
 	StateMachine<MinersWife>  m_StateMachine;
 
 	location              m_Location;
-
-
+	bool m_bIsCooking;
+	GameObject* m_pHusband;
 public:
 
 	MinersWife(const std::string& name) :GameObject(name),
@@ -38,6 +38,10 @@ public:
 	location Location()const { return m_Location; }
 	void          ChangeLocation(const location loc) { m_Location = loc; }
 
-	virtual bool HandleMessage(const Telegram& telegram) { return 1; }
+	virtual bool HandleMessage(const Telegram& telegram) { return m_StateMachine.HandleMessage(telegram); }
+	bool isCooking() { return m_bIsCooking; }
+	void SetCooking(bool cook) { m_bIsCooking = cook; }
 
+	GameObject* GetHusband() { return m_pHusband; }
+	void SetHusband(GameObject* obj) { m_pHusband = obj; }
 };

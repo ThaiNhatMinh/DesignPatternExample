@@ -1,6 +1,8 @@
 #include "stdafx.h"
 #include "MinerState.h"
 #include "Miner.h"
+#include "MessageDispatcher.h"
+#include "MessageType.h"
 #include <iostream>
 
 using std::cout;
@@ -81,6 +83,26 @@ void VisitBankAndDepositGold::Exit(Miner* pMiner)
 }
 
 
+bool GoHomeAndSleepTilRested::OnMessage(Miner *pMiner, const Telegram & msg)
+{
+	switch (msg.Msg)
+	{
+	case MsgType::Msg_StewReady:
+	{
+		cout << "\n" <<pMiner->GetName()
+			<< ": Okay Hun, ahm a comin'!";
+
+		pMiner->GetFSM().ChangeState(EatStew::Get());
+		return true;
+
+	}
+	default:
+		return false;
+	}
+
+	return false;
+}
+
 void GoHomeAndSleepTilRested::Enter(Miner* pMiner)
 {
 	if (pMiner->Location() != shack)
@@ -89,6 +111,8 @@ void GoHomeAndSleepTilRested::Enter(Miner* pMiner)
 
 		pMiner->ChangeLocation(shack);
 	}
+	
+	MessageDispatcher::Get()->DispatchMessage(0, pMiner->GetID(), pMiner->GetWife()->GetID(), MsgType::Msg_HiHoneyImHome, nullptr);
 }
 
 void GoHomeAndSleepTilRested::Execute(Miner* pMiner)
@@ -146,4 +170,21 @@ void QuenchThirst::Execute(Miner* pMiner)
 void QuenchThirst::Exit(Miner* pMiner)
 {
 	cout << "\n" <<pMiner->GetName() << ": " << "Leaving the saloon, feelin' good";
+}
+
+void EatStew::Enter(Miner* pMiner)
+{
+	cout << "\n" << pMiner->GetName() << ": " << "Smells Reaaal goood Elsa!";
+}
+
+void EatStew::Execute(Miner* pMiner)
+{
+	cout << "\n" << pMiner->GetName() << ": " << "Tastes real good too!";
+
+	pMiner->GetFSM().RevertToPreviousState();
+}
+
+void EatStew::Exit(Miner* pMiner)
+{
+	cout << "\n" << pMiner->GetName() << ": " << "Thankya li'lle lady. Ah better get back to whatever ah wuz doin'";
 }

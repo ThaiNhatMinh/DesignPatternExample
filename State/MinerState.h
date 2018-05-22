@@ -17,7 +17,7 @@ public:
 	virtual void Execute(Miner* miner);
 
 	virtual void Exit(Miner* miner);
-	virtual bool OnMessage(Miner*, const Telegram& msg)override {return 1;}
+	virtual bool OnMessage(Miner*, const Telegram& msg)override {return 0;}
 };
 
 class VisitBankAndDepositGold : public State<Miner>, public Singleton<VisitBankAndDepositGold>
@@ -33,7 +33,7 @@ public:
 	virtual void Execute(Miner* miner);
 
 	virtual void Exit(Miner* miner);
-	virtual bool OnMessage(Miner*, const Telegram& msg)override {return 1;}
+	virtual bool OnMessage(Miner*, const Telegram& msg)override {return 0;}
 };
 
 class GoHomeAndSleepTilRested : public State<Miner>,public Singleton<GoHomeAndSleepTilRested>
@@ -43,7 +43,7 @@ class GoHomeAndSleepTilRested : public State<Miner>,public Singleton<GoHomeAndSl
 public:
 
 	GoHomeAndSleepTilRested() {}
-	virtual bool OnMessage(Miner*, const Telegram& msg)override {return 1;}
+	virtual bool OnMessage(Miner*, const Telegram& msg)override;
 	virtual void Enter(Miner* miner);
 
 	virtual void Execute(Miner* miner);
@@ -63,7 +63,7 @@ private:
 
 public:
 	QuenchThirst() {}
-	virtual bool OnMessage(Miner*, const Telegram& msg)override {return 1;}
+	virtual bool OnMessage(Miner*, const Telegram& msg)override {return 0;}
 	virtual void Enter(Miner* miner);
 
 	virtual void Execute(Miner* miner);
@@ -71,3 +71,14 @@ public:
 	virtual void Exit(Miner* miner);
 };
 
+class EatStew : public State<Miner>, public Singleton<EatStew>
+{
+public:
+	EatStew() {}
+	virtual bool OnMessage(Miner*, const Telegram& msg) override { return 0; }
+	virtual void Enter(Miner* miner);
+
+	virtual void Execute(Miner* miner);
+
+	virtual void Exit(Miner* miner);
+};
